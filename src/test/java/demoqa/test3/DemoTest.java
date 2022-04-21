@@ -1,11 +1,18 @@
 package demoqa.test3;
 
+import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 
 public class DemoTest {
+    @BeforeAll
+    static void beforeAll() {Configuration.startMaximized=true;}
 
     @Test
     void fillFornTest() {
@@ -16,13 +23,22 @@ public class DemoTest {
         $("[for=gender-radio-2]").click();
         $("#userNumber").setValue("12345678911");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").selectOption("April");
-        $(".react-datepicker__year-select").selectOption("2021");
-        $(".react-datepicker__day react-datepicker__day--020:not(react-datepicker__day--selected react-datepicker__day--today)").click();
+        $("[aria-label=\"Choose Thursday, April 21st, 2022\"]").click();
+        $("#subjectsInput").setValue("Maths").pressEnter();
+        $("[for=hobbies-checkbox-1]").click();
+        $("#uploadPicture").uploadFromClasspath(("img/1.png"));
+        $("#currentAddress").setValue("Some Street 1");
+        $(".body-height").scrollTo();
+        $("#state").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
+        $("#city").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
+        $(".body-height").scrollTo();
+        $("#submit").click();
+
+        $("#submit").click();
 
 
-
-        $("[for=gender-radio-2]").click();
     }
 }
 

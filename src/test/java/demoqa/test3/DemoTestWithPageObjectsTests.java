@@ -4,19 +4,19 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 
-public class DemoTest extends TestBase {
+public class DemoTestWithPageObjectsTests extends TestBase {
 
 
     @Test
     void fillFornTest() {
-        $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
+        registrationsPage.OpenPage();
 
-        open("https://demoqa.com/automation-practice-form");
-        $("#firstName").setValue("Bananchik");
-        $("#lastName").setValue("jeltov");
+        registrationsPage.typeFirstName("Bananchik")
+                         .typeLastName("Jello");
         $("#userEmail").setValue("kojura1@mail.ru");
         $("[for=gender-radio-2]").click();
         $("#userNumber").setValue("12345678911");

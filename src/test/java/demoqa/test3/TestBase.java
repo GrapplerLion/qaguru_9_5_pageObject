@@ -10,5 +10,7 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        Configuration.startMaximized=true;}
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.browserSize = "1920x1800";
+    }
 }

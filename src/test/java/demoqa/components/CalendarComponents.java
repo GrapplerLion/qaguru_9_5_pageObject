@@ -6,23 +6,19 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class CalendarComponents {
     private SelenideElement dateInput = $("#dateOfBirthInput");
-
-    public void SafeDate(String day, String month, String year){
+    public void setDate(String day,String month,String year){
         dateInput.click();
-        $("[aria-label=\"Choose Thursday, April 21st, 2022\"]").click();
-        $("#subjectsInput").setValue("Maths").pressEnter();
-        $("[for=hobbies-checkbox-1]").click();
+        $(".react-datepicker__month-select").selectOption(month);
+        $(".react-datepicker__year-select").selectOption(year);
+        $(".react-datepicker__day--0"+ day +":not(.react-datepicker__day--outside-month)").click();
     }
-        /*
-        $("#dateOfBirthInput").click();
-        $("[aria-label=\"Choose Thursday, April 21st, 2022\"]").click();
-        $("#subjectsInput").setValue("Maths").pressEnter();
-        $("[for=hobbies-checkbox-1]").click();
-         */
 
 
 
 
 
-
+//$("#dateOfBirthInput").click();
+//        $(".react-datepicker__month-select").selectOption("July");
+//        $(".react-datepicker__year-select").selectOption("2008");
+//        $(".react-datepicker__day--030:not(.react-datepicker__day--outside-month)").click();
 }
